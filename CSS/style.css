@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container{
+    position: fixed;
+    left: calc(50vw - 25px);
+    top: 20px;
+    background: #46B1C9;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    box-shadow: 0px 0px 5px 0px lightslategrey;
+    z-index: 10;
+    cursor: pointer;
+}
+
+#bar1, #bar2, #bar3{
+    display: block;
+    width: 30px;
+    height: 5px;
+    background: rgb(40, 40, 40);
+    margin: 5px 0px;
+}
+
+.change #bar1{
+    animation: HmbrgBtn1 200ms forwards;
+}
+.change #bar2{
+    animation: HmbrgBtn2 100ms forwards;
+}
+.change #bar3{
+    animation: HmbrgBtn3 200ms forwards;
+}
+
+@keyframes HmbrgBtn1{
+    40%{ transform: translate(0px, 10px); }
+    60%{ transform: translate(0px, 10px); }
+    100%{ transform: translate(0px, 10px) rotate(45deg);}
+}
+
+@keyframes HmbrgBtn3{
+    40%{ transform: translate(0px, -10px); }
+    60%{ transform: translate(0px, -10px); }
+    100%{ transform: translate(0px, -10px) rotate(-45deg);}
+}
+
+@keyframes HmbrgBtn2{
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+.dropDownMenu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 0vh;
+    background: #6CCFF6;
+    transition: 300ms ease-in-out;
+    z-index: 9;
+}
+.dropDownMenu a{
+    opacity: 0;
+    transition: 200ms;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: black;
+}
+.dropDownMenu a:active{
+    color: black;
+}
+
+.open{
+    height: 100vh;
+}
+.open a{
+    opacity: 1;
+    margin: 16px 0px;
+}
+.open a:hover{
+    text-shadow: 0px 0px 4px lightslategray;
+}
