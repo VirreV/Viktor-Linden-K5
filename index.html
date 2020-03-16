@@ -11,14 +11,14 @@
 <body>
     <header>
         <nav>
-            <div id="container" onclick="toggleHmbrgMenu(this)">
+            <button type="button" id="container" onclick="toggleHmbrgMenu(this)">
                 <div id="hamburger-btn">
                     <div id="bar1"></div><div id="bar2"></div><div id="bar3"></div>
                 </div>
-            </div>
+            </button>
             <div class="dropDownMenu">
-                <a href="#article1">About</a>
-                <a href="#article3">Contact</a>
+                <a href="#article1" onclick="toggleHmbrgMenu(this)">About</a>
+                <a href="#article3" onclick="toggleHmbrgMenu(this)">Contact</a>
                 <a href="youtube.com">YouTube</a>
             </div>
         </nav>

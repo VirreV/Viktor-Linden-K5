@@ -2,22 +2,27 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 #container{
     position: fixed;
-    left: calc(50vw - 25px);
+    left: 20px;
     top: 20px;
-    background: #46B1C9;
+    background: #6CCFF6;
     width: 50px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 100%;
-    box-shadow: 0px 0px 5px 0px lightslategrey;
+    box-shadow: 0px 0px 7px 1px lightslategrey;
     z-index: 10;
     cursor: pointer;
+    border: none;
+}
+#container:focus{
+    outline: none;
 }
 
 #bar1, #bar2, #bar3{
@@ -27,15 +32,24 @@
     background: rgb(40, 40, 40);
     margin: 5px 0px;
 }
+#bar1{
+    animation: HmbrgBtnBack1 250ms forwards;
+}
+#bar2{
+    animation: HmbrgBtnBack2 150ms forwards;
+}
+#bar3{
+    animation: HmbrgBtnBack3 250ms forwards;
+}
 
 .change #bar1{
-    animation: HmbrgBtn1 200ms forwards;
+    animation: HmbrgBtn1 250ms forwards;
 }
 .change #bar2{
-    animation: HmbrgBtn2 100ms forwards;
+    animation: HmbrgBtn2 150ms forwards;
 }
 .change #bar3{
-    animation: HmbrgBtn3 200ms forwards;
+    animation: HmbrgBtn3 250ms forwards;
 }
 
 @keyframes HmbrgBtn1{
@@ -53,6 +67,23 @@
 @keyframes HmbrgBtn2{
     from {opacity: 1;}
     to {opacity: 0;}
+}
+
+@keyframes HmbrgBtnBack1{
+    0%{ transform: translate(0px, 10px) rotate(45deg); }
+    40%{ transform: translate(0px, 10px) rotate(0deg); }
+    60%{ transform: translate(0px, 10px) rotate(0deg); }
+    100%{ transform: translate(0px, 0px) rotate(0deg); }
+}
+@keyframes HmbrgBtnBack2{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes HmbrgBtnBack3{
+    0%{ transform: translate(0px, -10px) rotate(-45deg); }
+    40%{ transform: translate(0px, -10px) rotate(0deg); }
+    60%{ transform: translate(0px, -10px) rotate(0deg); }
+    100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
 .dropDownMenu{
@@ -88,4 +119,12 @@
 }
 .open a:hover{
     text-shadow: 0px 0px 4px lightslategray;
+}
+
+::-webkit-scrollbar-track{
+    background: #46B1C9;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #6CCFF6;
 }
