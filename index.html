@@ -11,22 +11,33 @@
 <body>
     <header>
         <nav>
-            <button type="button" id="container" onclick="toggleHmbrgMenu()">
-                <div id="hamburger-btn">
-                    <div id="bar1"></div><div id="bar2"></div><div id="bar3"></div>
-                </div>
-            </button>
-            <button id="darkModeBtn" type="button" onclick="toggleDarkMode()"><div></div></button>
             <div class="dropDownMenu">
                 <a href="" onclick="toggleHmbrgMenu()">About</a>
                 <a href="" onclick="toggleHmbrgMenu()">Contact</a>
                 <a href="http://youtube.com" onclick="toggleHmbrgMenu()">YouTube</a>
                 <a href="https://coolors.co/ffffff-000000-6ccff6-86d7f7-463f1a" onclick="toggleHmbrgMenu()">colors.co</a>
             </div>
+            <button type="button" id="container" onclick="toggleHmbrgMenu()">
+                <div id="hamburger-btn">
+                    <div id="bar1"></div><div id="bar2"></div><div id="bar3"></div>
+                </div>
+            </button>
+            <div id="darkModeDiv">
+                <button id="darkModeBtn" type="button" onclick="toggleDarkMode()"><div></div></button>
+                <span id="colorModeText">Light Mode</span>
+            </div>
+            <div id="breakLine"></div>
         </nav>
     </header>
-    <div id="topLeft"></div>
-    <article>Hej jag heter Paul<br>Och jag är ganska korkad</article>
-    <div id="bottomRight"></div>
+    <article>Hej jag heter Paul<br>Och jag är ganska korkad<br><br>Men gråkeps-Filip gillar när jag är full<br>Han tycker jag är rolig då</article>
+    <article><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, quidem!</p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius officiis sequi dicta similique accusamus nihil!</p></article>
+    <div class="buyContainer">
+        <div class="buy"><h4>Buy</h4><span>100:-</span>An item you can buy.</div>
+        <div class="buy"><h4>Buy</h4><span>100:-</span>Another one.</div>
+        <div class="buy"><h4>Buy</h4><span>100:-</span>And another item to buy.</div>
+        <div class="buy"><h4>Buy</h4><span>100:-</span>Single</div>
+        <div class="buy"><h4>Buy</h4><span>150:-</span>Double</div>
+        <div class="buy"><h4>Buy</h4><span>250:-</span>Package</div>
+    </div>
 </body>
 </html>

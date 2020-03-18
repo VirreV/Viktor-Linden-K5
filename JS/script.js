@@ -13,4 +13,11 @@ function toggleHmbrgMenu() {
 
 function toggleDarkMode() {
     document.querySelector("body").classList.toggle("darkMode");
+    if(!(darkMode)){
+        darkMode = true;
+        document.querySelector("#colorModeText").innerHTML = "Dark Mode";
+    } else {
+        darkMode = false;
+        document.querySelector("#colorModeText").innerHTML =  "Light Mode";
+    }
 }
