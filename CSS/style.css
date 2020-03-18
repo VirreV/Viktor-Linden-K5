@@ -3,34 +3,60 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3vw;
+    line-height: 1.5;
+}
+
+body{
+    background: black;
+}
+.darkMode{
+    filter: invert();
+    background: white;
+}
+.darkMode #darkModeBtn div{
+    left: 25px;
+}
+
+header{
+    height: calc(4vw + 51px);
+    border-bottom: 1px solid white;
 }
 
 #container{
     position: fixed;
-    left: 20px;
-    top: 20px;
-    background: #6CCFF6;
+    left: 2vw;
+    top: 2vw;
+    background: rgba(0, 0, 0, 0);
     width: 50px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 100%;
-    box-shadow: 0px 0px 7px 1px lightslategrey;
+    box-shadow: 0px 0px 7px 0px black;
     z-index: 10;
     cursor: pointer;
     border: none;
+    transition: 500ms;
+    border: 1px solid white;
+    border-radius: 15%;
 }
 #container:focus{
     outline: none;
 }
+#container:hover{
+    transform: scale(0.85);
+}
+
 
 #bar1, #bar2, #bar3{
     display: block;
-    width: 30px;
-    height: 5px;
-    background: rgb(40, 40, 40);
-    margin: 5px 0px;
+    width: 26px;
+    height: 2px;
+    background: rgb(255, 255, 255);
+    margin: 6px 0px;
 }
 #bar1{
     animation: HmbrgBtnBack1 250ms forwards;
@@ -53,15 +79,15 @@
 }
 
 @keyframes HmbrgBtn1{
-    40%{ transform: translate(0px, 10px); }
-    60%{ transform: translate(0px, 10px); }
-    100%{ transform: translate(0px, 10px) rotate(45deg);}
+    40%{ transform: translate(0px, 8px); }
+    60%{ transform: translate(0px, 8px); }
+    100%{ transform: translate(0px, 8px) rotate(45deg);}
 }
 
 @keyframes HmbrgBtn3{
-    40%{ transform: translate(0px, -10px); }
-    60%{ transform: translate(0px, -10px); }
-    100%{ transform: translate(0px, -10px) rotate(-45deg);}
+    40%{ transform: translate(0px, -8px); }
+    60%{ transform: translate(0px, -8px); }
+    100%{ transform: translate(0px, -8px) rotate(-45deg);}
 }
 
 @keyframes HmbrgBtn2{
@@ -70,9 +96,9 @@
 }
 
 @keyframes HmbrgBtnBack1{
-    0%{ transform: translate(0px, 10px) rotate(45deg); }
-    40%{ transform: translate(0px, 10px) rotate(0deg); }
-    60%{ transform: translate(0px, 10px) rotate(0deg); }
+    0%{ transform: translate(0px, 8px) rotate(45deg); }
+    40%{ transform: translate(0px, 8px) rotate(0deg); }
+    60%{ transform: translate(0px, 8px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 @keyframes HmbrgBtnBack2{
@@ -80,9 +106,9 @@
     to {opacity: 1;}
 }
 @keyframes HmbrgBtnBack3{
-    0%{ transform: translate(0px, -10px) rotate(-45deg); }
-    40%{ transform: translate(0px, -10px) rotate(0deg); }
-    60%{ transform: translate(0px, -10px) rotate(0deg); }
+    0%{ transform: translate(0px, -8px) rotate(-45deg); }
+    40%{ transform: translate(0px, -8px) rotate(0deg); }
+    60%{ transform: translate(0px, -8px) rotate(0deg); }
     100%{ transform: translate(0px, 0px) rotate(0deg); }
 }
 
@@ -101,10 +127,11 @@
 .dropDownMenu a{
     opacity: 0;
     transition: 200ms;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 2em;
     text-decoration: none;
-    color: black;
+    color: rgba(0, 0, 0, 0.7);
 }
 .dropDownMenu a:active{
     color: black;
@@ -114,17 +141,82 @@
     height: 100vh;
 }
 .open a{
+    text-align: center;
     opacity: 1;
     margin: 16px 0px;
+    transition: 150ms ease-in-out;
 }
 .open a:hover{
-    text-shadow: 0px 0px 4px lightslategray;
+    color: white;
+    text-shadow: none;
 }
 
-::-webkit-scrollbar-track{
-    background: #46B1C9;
+.logo{
+    margin-top: 100px;    
 }
 
-::-webkit-scrollbar-thumb{
+.menuOpen::-webkit-scrollbar {
+    visibility: hidden;
+}
+.menuOpen{
     background: #6CCFF6;
+    overflow: hidden;
+}
+
+article{
+    height: 40vh;
+    width: 80vw;
+    border: 1px solid white;
+    margin: 5vw auto;
+    position: relative;
+    padding: 2vw;
+}
+article:after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 60vw;
+    height: 25vh;
+    bottom: -1px;
+    left: -1px;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+
+}
+article:before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 60vw;
+    height: 25vh;
+    top: -1px;
+    right: -1px;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+
+#darkModeBtn{
+    position: fixed;
+    right: 2vw;
+    top: 2vw;
+    width: 50px;
+    height: 25px;
+    border-radius: 5vw;
+    border: 1px solid white;
+    background: rgba(0, 0, 0, 0);
+    z-index: 10;
+}
+#darkModeBtn:focus{
+    outline: none;
+}
+#darkModeBtn div{
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: white;
+    z-index: 10;
+    transition: 200ms;
 }
