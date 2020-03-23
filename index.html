@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="This is my project for K5. Made in Visual Studio Code at NTI Gymnasiet Stockholm.">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600&display=swap" rel="stylesheet">    <link rel="stylesheet" href="CSS/style.css">
-    <script src="JS/script.js"></script>
+    <script src="JS/script.js" defer></script>
     <title>Document</title>
 </head>
 <body>
     <header>
         <nav>
             <div class="dropDownMenu">
-                <a href="" onclick="toggleHmbrgMenu()">About</a>
-                <a href="" onclick="toggleHmbrgMenu()">Contact</a>
+                <a href="#firstArticle" onclick="toggleHmbrgMenu()">About</a>
+                <a href="#buyContainer" onclick="toggleHmbrgMenu()">Contact</a>
                 <a href="http://youtube.com" onclick="toggleHmbrgMenu()">YouTube</a>
                 <a href="https://coolors.co/ffffff-000000-6ccff6-86d7f7-463f1a" onclick="toggleHmbrgMenu()">colors.co</a>
             </div>
@@ -24,20 +24,21 @@
             </button>
             <div id="darkModeDiv">
                 <button id="darkModeBtn" type="button" onclick="toggleDarkMode()"><div></div></button>
-                <span id="colorModeText">Light Mode</span>
+                <span id="colorModeText">Dark Mode</span>
             </div>
             <div id="breakLine"></div>
         </nav>
     </header>
-    <article>Hej jag heter Paul<br>Och jag är ganska korkad<br><br>Men gråkeps-Filip gillar när jag är full<br>Han tycker jag är rolig då</article>
+    <article id="firstArticle">Hej jag heter Paul<br>Och jag är ganska korkad<br><br>Men gråkeps-Filip gillar när jag är full<br>Han tycker jag är rolig då</article>
     <article><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, quidem!</p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius officiis sequi dicta similique accusamus nihil!</p></article>
-    <div class="buyContainer">
-        <div class="buy"><h4>Buy</h4><span>100:-</span>An item you can buy.</div>
-        <div class="buy"><h4>Buy</h4><span>100:-</span>Another one.</div>
+    <div class="buyContainer" id="buyContainer">
+        <div class="buy">An item you can buy.<h4>Buy</h4><span>100:-</span></div>
+        <div class="buy">Another one.<h4>Buy</h4><span>100:-</span></div>
         <div class="buy"><h4>Buy</h4><span>100:-</span>And another item to buy.</div>
         <div class="buy"><h4>Buy</h4><span>100:-</span>Single</div>
         <div class="buy"><h4>Buy</h4><span>150:-</span>Double</div>
-        <div class="buy"><h4>Buy</h4><span>250:-</span>Package</div>
     </div>
+    <article>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit veritatis aperiam distinctio quis, amet, libero est voluptatem sit porro officia quibusdam consectetur. Unde iusto iste quas illum dignissimos nobis ullam cumque quasi! Voluptas dolore reiciendis sunt amet exercitationem vel fugiat quas iusto? Rem modi ipsa ad, iure, ab pariatur ea eum quos consequatur sed perferendis! Harum vel laborum maiores illum impedit tenetur aliquam aut, distinctio perspiciatis, laudantium deleniti. Sapiente maiores magni aliquam repudiandae reprehenderit doloremque sint, recusandae quidem non? Dolores a ab repudiandae magni consequatur vero tempora, deserunt sit placeat voluptatum id incidunt illo soluta beatae impedit enim aliquid. Libero?</article>
+    <div class="cart"><img src="IMG/cart.png" alt="Cart icon"><span id="cartValue">0</span>:-</div>
 </body>
 </html>

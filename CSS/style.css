@@ -3,24 +3,30 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    color: #ffffff;
+    color: var(--foregroundColor);
     font-family: 'Montserrat', sans-serif;
     font-size: 3vw;
     line-height: 1.5;
 }
 
 body{
-    background: black;
+    --navColor: #6CCFF6;
+    --foregroundColor: black;
+    --backgroundColor: white;
+    background: var(--backgroundColor);
 }
 
-.darkMode{
-    filter: invert();
-    background: white;
+body.darkMode{
+    --navColor: #933009;
+    --foregroundColor: white;
+    --backgroundColor: black;
+    background: var(--backgroundColor);
 }
 
 header{
+   
     height: calc(4vw + 51px);
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--foregroundColor);
 }
 
 #container{
@@ -37,7 +43,7 @@ header{
     cursor: pointer;
     border: none;
     transition: 500ms;
-    border: 1px solid white;
+    border: 1px solid var(--foregroundColor);
 }
 #container:focus{
     outline: none;
@@ -51,7 +57,7 @@ header{
     display: block;
     width: 26px;
     height: 2px;
-    background: rgb(255, 255, 255);
+    background: var(--foregroundColor);
     margin: 6px 0px;
 }
 #bar1{
@@ -116,11 +122,13 @@ header{
     position: fixed;
     width: 100vw;
     height: 0vh;
-    background: #933009;
+    background: var(--navColor);
     transition: 300ms ease-in-out;
     z-index: 9;
+    top: 0;
 }
 .dropDownMenu a{
+    display: none;
     opacity: 0;
     transition: 200ms;
     font-family: 'Montserrat', sans-serif;
@@ -137,6 +145,7 @@ header{
     height: 100vh;
 }
 .open a{
+    display: block;
     text-align: center;
     opacity: 1;
     margin: 16px 0px;
@@ -150,40 +159,46 @@ header{
 .logo{
     margin-top: 100px;    
 }
-
-.menuOpen::-webkit-scrollbar {
+body.menuOpen{
+    background: var(--navColor);
+    transition: 300ms ease-in-out;
+    overflow: hidden;
+}
+body.menuOpen::-webkit-scrollbar {
     visibility: hidden;
 }
 
 article{
     width: 80vw;
-    border: 1px solid white;
+    border: 1px solid var(--foregroundColor);
     margin: 5vw auto;
     position: relative;
     padding: 2vw;
+    color: var(---colorText);
+    background: var(--colorBackground);
 }
 article:after{
     content: '';
     display: block;
     position: absolute;
-    width: 60vw;
-    height: 50%;
+    width: 70vw;
+    height: calc(100% - 10vw);
     bottom: -2px;
     left: -2px;
-    border-bottom: 3px solid black;
-    border-left: 3px solid black;
+    border-bottom: 3px solid var(--backgroundColor);
+    border-left: 3px solid var(--backgroundColor);
 
 }
 article:before{
     content: '';
     display: block;
     position: absolute;
-    width: 60vw;
-    height: 50%;
+    width: 70vw;
+    height: calc(100% - 10vw);
     top: -2px;
     right: -2px;
-    border-top: 3px solid black;
-    border-right: 3px solid black;
+    border-top: 3px solid var(--backgroundColor);
+    border-right: 3px solid var(--backgroundColor);
 }
 
 #darkModeDiv{
@@ -197,14 +212,14 @@ article:before{
     align-items: center;
 }
 #colorModeText{
-    font-size: calc(1vw + 8px);
+    font-size: calc(0.8vw + 8px);
 }
 #darkModeBtn{
     position: relative;
     width: 46px;
     height: 25px;
     border-radius: 5vw;
-    border: 1px solid white;
+    border: 1px solid var(--foregroundColor);
     background: rgba(0, 0, 0, 0);
     z-index: 10;
 }
@@ -216,7 +231,7 @@ article:before{
     height: 21px;
     border-radius: 100%;
     margin: 1px 1px;
-    background: white;
+    background: var(--foregroundColor);
     z-index: 10;
     transition: 200ms;
 }
@@ -236,8 +251,9 @@ article:before{
     position: relative;
     display: flex;
     flex-direction: column;
-    border: 1px solid white;
+    border: 1px solid var(--foregroundColor);
     padding: 2vw;
+    padding-bottom: calc(2vw + 3ch);
     width: 22vw;
     transition: 200ms ease-in-out;
     font-weight: 400;
@@ -247,25 +263,48 @@ article:before{
 
 .buy h4{
     font-weight: 400;
-    margin-bottom: 1.5vh;
     background: rgba(0, 0, 0, 0);
     transition: 200ms ease-in-out;
+    position: absolute;
+    left: 2vw;
+    bottom: 1vw;
 }
 
 .buy span{
     position: absolute;
     right: 2vw;
-    transition: 200ms ease-in-out;
+    bottom: 1vw;
     background: rgba(0, 0, 0, 0);
-    color: rgba(0, 0, 0, 0.6);
+    color: var(--backgroundColor);
+    opacity: 0.7;
     font-weight: 600;
 }
 
 .buy:hover{
-    background: white;
-    color: black;
+    background: var(--foregroundColor);
+    color: var(--backgroundColor);
 }
 .buy:hover h4{
-    color: black;
+    color: var(--backgroundColor);
     font-weight: 600;
+}
+
+.cart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    color: var(--foregroundColor);
+    top: 2vw;
+    left: 50vw;
+    transform: translateX(-50%);
+    font-weight: 600;
+    z-index: 10;
+}
+.cart img{
+    width: 3vw;
+    margin-right: 0.6vw;
+}
+.darkMode .cart img{
+    filter: invert();
 }
