@@ -312,7 +312,7 @@ article:before{
     filter: invert();
 }
 
-#cartDiv{
+#cart{
     cursor: pointer;
 }
 
