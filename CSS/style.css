@@ -312,6 +312,10 @@ article:before{
     filter: invert();
 }
 
+#cartDiv{
+    cursor: pointer;
+}
+
 #cartDropDown{
     display: flex;
     flex-direction: column;
