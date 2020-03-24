@@ -128,7 +128,7 @@ header{
     top: 0;
 }
 .dropDownMenu a{
-    display: none;
+    display: block;
     opacity: 0;
     transition: 200ms;
     font-family: 'Montserrat', sans-serif;
@@ -136,6 +136,9 @@ header{
     font-size: 2em;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.6);
+    transform: translateY(-100vh);
+    margin: 16px 0px;
+    text-align: center;
 }
 .dropDownMenu a:active{
     color: black;
@@ -145,15 +148,11 @@ header{
     height: 100vh;
 }
 .open a{
-    display: block;
-    text-align: center;
     opacity: 1;
-    margin: 16px 0px;
-    transition: 150ms ease-in-out;
+    transform: translateY(0px);
 }
 .open a:hover{
     color: white;
-    text-shadow: none;
 }
 
 .logo{
@@ -260,7 +259,9 @@ article:before{
     margin: 1ch 0px;
     line-height: auto;
 }
-
+.buy .item{
+    transition: ease-in-out 200ms;
+}
 .buy h4{
     font-weight: 400;
     background: rgba(0, 0, 0, 0);
@@ -270,7 +271,7 @@ article:before{
     bottom: 1vw;
 }
 
-.buy span{
+.buy .price{
     position: absolute;
     right: 2vw;
     bottom: 1vw;
@@ -282,6 +283,8 @@ article:before{
 
 .buy:hover{
     background: var(--foregroundColor);
+}
+.buy:hover .item{
     color: var(--backgroundColor);
 }
 .buy:hover h4{
@@ -295,11 +298,11 @@ article:before{
     justify-content: center;
     position: fixed;
     color: var(--foregroundColor);
-    top: 2vw;
+    top: 1vw;
     left: 50vw;
     transform: translateX(-50%);
     font-weight: 600;
-    z-index: 10;
+    z-index: 8;
 }
 .cart img{
     width: 3vw;
@@ -307,4 +310,62 @@ article:before{
 }
 .darkMode .cart img{
     filter: invert();
+}
+
+#cartDropDown{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 0vh;
+    background: var(--navColor);
+    transition: 300ms ease-in-out;
+    z-index: 7;
+    top: 0;
+    left: 0;
+}
+#cartDropDown li{
+    display: block;
+    text-align: center;
+    opacity: 0;
+    transition: 200ms;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    text-decoration: none;
+    color: var(--foregroundColor);
+    transition: 150ms ease-in-out;
+    transition-delay: 50ms;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 70vw;
+}
+#cartDropDown h4{
+    position: fixed;
+    top: -10vh;
+    font-weight: 600;
+    font-size: 1.5em;
+    transition: 300ms ease-in-out;
+}
+#cartDropDown ul{
+    margin-top: -10vh;
+    transition: 150ms ease-in-out;
+    transition-delay: 50ms;
+}
+.cartOpen #cartDropDown{
+    height: 100vh;
+}
+.cartOpen #cartDropDown li{   
+    opacity: 1;
+    transform: translateY(0px);
+    border-bottom: var(--foregroundColor) 1px solid;
+}
+.cartOpen #cartDropDown h4{
+    top: 2ch;
+}
+.cartOpen #cartDropDown ul{
+    margin-top: 7ch;
 }
