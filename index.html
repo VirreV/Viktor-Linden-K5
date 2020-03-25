@@ -12,8 +12,8 @@
     <header>
         <nav>
             <div class="dropDownMenu">
-                <a href="#firstArticle" onclick="toggleHmbrgMenu()">About</a>
-                <a href="#buyContainer" onclick="toggleHmbrgMenu()">Contact</a>
+                <a href="#" onclick="toggleHmbrgMenu()">Link1</a>
+                <a href="#buyContainer" onclick="toggleHmbrgMenu()">Link2</a>
                 <a href="http://youtube.com" onclick="toggleHmbrgMenu()">YouTube</a>
                 <a href="https://coolors.co/ffffff-000000-6ccff6-86d7f7-463f1a" onclick="toggleHmbrgMenu()">colors.co</a>
             </div>
@@ -29,12 +29,12 @@
             <div id="breakLine"></div>
         </nav>
     </header>
-    <article id="firstArticle">Hej jag heter Paul<br>Och jag är ganska korkad<br><br>Men gråkeps-Filip gillar när jag är full<br>Han tycker jag är rolig då</article>
+    <article>Hej jag heter Paul<br>Och jag är ganska korkad<br><br>Men gråkeps-Filip gillar när jag är full<br>Han tycker jag är rolig då</article>
     <article><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, quidem!</p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius officiis sequi dicta similique accusamus nihil!</p></article>
     <div class="buyContainer" id="buyContainer">
-        <div class="buy"><span class="item">An item you can buy.</span><h4>Buy</h4><span class="price">100:-</span></div>
-        <div class="buy"><span class="item">Another one.</span><h4>Buy</h4><span class="price">100:-</span></div>
-        <div class="buy"><span class="item">And another item to buy.</span><h4>Buy</h4><span class="price">100:-</span></div>
+        <div class="buy"><span class="item">An item you can buy</span><h4>Buy</h4><span class="price">100:-</span></div>
+        <div class="buy"><span class="item">Another one</span><h4>Buy</h4><span class="price">100:-</span></div>
+        <div class="buy"><span class="item">And another item to buy</span><h4>Buy</h4><span class="price">100:-</span></div>
         <div class="buy"><span class="item">Single</span><h4>Buy</h4><span class="price">100:-</span></div>
         <div class="buy"><span class="item">Double</span><h4>Buy</h4><span class="price">150:-</span></div>
     </div>
@@ -46,11 +46,10 @@
         </div>
         <div id="cartDropDown">
             <h4>Cart</h4>
-            <ul>
-                <li>testing<span>x1</span></li>
-                <li>test<span>x100</span></li>
-                <li>test<span>x100000000</span></li>
+            <ul id="cartList">
+                <div class="cartItem">Your cart is empty</div>
             </ul>
+            <a id="addCartItems" href="#buyContainer" onclick="showCart()">Add item</a>
         </div>
     </div>
 </body>
