@@ -253,7 +253,7 @@ article:before{
     transform: translate(100%, 0px);
 }
 
-.buyContainer{
+#buyContainer{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -273,9 +273,6 @@ article:before{
     font-weight: 400;
     margin: 1ch 0px;
     line-height: auto;
-}
-.buy .item{
-    transition: ease-in-out 200ms;
 }
 .buy h4{
     font-weight: 400;
@@ -298,8 +295,6 @@ article:before{
 
 .buy:hover{
     background: var(--foregroundColor);
-}
-.buy:hover .item{
     color: var(--backgroundColor);
 }
 .buy:hover h4{

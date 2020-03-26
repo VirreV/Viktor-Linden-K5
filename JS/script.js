@@ -1,3 +1,31 @@
+let request = new XMLHttpRequest();
+request.open("GET", "../DATA/products.json", false);
+request.send(null);
+let allProducts = JSON.parse(request.responseText);
+addShopItems();
+
+function addShopItems(){
+    for(let i = 0; i < allProducts.length; i++){
+        let el = document.createElement("div");
+        el.className = "buy";
+        el.innerHTML = allProducts[i].name;
+        let buyTextEl = document.createElement("h4");
+        buyTextEl.innerHTML = "buy";
+        let itemPriceEl = document.createElement("span");
+        itemPriceEl.className = "price";
+        itemPriceEl.innerHTML = allProducts[i].price + ":-";
+        el.appendChild(buyTextEl);
+        el.appendChild(itemPriceEl);
+        el.addEventListener("click", () => {
+            price = allProducts[i].price;
+            itemName = allProducts[i].name;
+            addCartItem(itemName, price);
+            updateCartPrice();
+        })
+        document.querySelector("#buyContainer").appendChild(el);
+    }
+}
+
 let menu = false;
 let cartMenu = false;
 let darkMode = false;
@@ -26,20 +54,9 @@ function toggleDarkMode() {
     }
 }
 
-document.querySelectorAll(".buy").forEach(el => {
-    el.addEventListener("click", () => {
-        let price = parseInt(el.querySelector(".price").innerHTML.substring(0, el.querySelector(".price").innerHTML.length - 2));
-        let itemName = el.querySelector(".item").innerHTML;
-        addCartItem(itemName, price);
-        updateCartPrice();
-    })
-})
-
 function addCartItem(itemName, cost){
     let existing = false;
     for(let i = 0; i < cartItems.length; i++){
-        console.log(itemName);
-        console.log(cartItems[i].item);
         if(cartItems[i].item == itemName){
             existing = true;
             cartItems[i].count += 1;
