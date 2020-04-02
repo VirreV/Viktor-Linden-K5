@@ -25,10 +25,12 @@ document.querySelector("#loginForm").addEventListener("submit", el => {
     }
 
     if(!(login)){
-        let wrongEl = document.createElement("div");
-        wrongEl.innerHTML = "Fel användarnamn eller lösenord";
-        wrongEl.id = "wrongInlog";
-        document.querySelector("fieldset").appendChild(wrongEl);
+        if(document.getElementById("wrongInlog") == null){
+            let wrongEl = document.createElement("div");
+            wrongEl.innerHTML = "Fel användarnamn eller lösenord";
+            wrongEl.id = "wrongInlog";
+            document.querySelector("fieldset").appendChild(wrongEl);
+        }
     } 
     else if(login){
         loginSuccess(user, jsonId);
@@ -38,42 +40,12 @@ document.querySelector("#loginForm").addEventListener("submit", el => {
 });
 
 function loginSuccess(user, jsonId){
-    document.querySelector("#loginForm").removeEventListener("submit", el => {
-        if(el.preventDefault) el.preventDefault();
-        let unameEl = el.target.querySelector("input[type=text]");
-        let passwordEl = el.target.querySelector("input[type=password]");
-    
-        let login = false;
-        let user = "";
-        let jsonId = 0;
-    
-        for(let i = 0; i < allLogin.length; i++){
-            if(unameEl.value.toLowerCase() == allLogin[i].user.toLowerCase()){
-                if(passwordEl.value == allLogin[i].pass){
-                    login = true;
-                    user = allLogin[i].user;
-                    jsonId = i;
-                } else{
-                    break;
-                }
-            }
-        }
-    
-        if(!(login)){
-            let wrongEl = document.createElement("div");
-            wrongEl.innerHTML = "Fel användarnamn eller lösenord";
-            wrongEl.id = "wrongInlog";
-            document.querySelector("fieldset").appendChild(wrongEl);
-        } 
-        else if(login){
-            loginSuccess(user, jsonId);
-        }
-    
-        return false;
-    });
-
-    let formEl = document.querySelector("form");
-    formEl.removeChild(document.querySelector("fieldset"));
+    let bodyEl = document.querySelector("body");
+    bodyEl.id = "shopItemForm";
+    bodyEl.removeChild(document.querySelector("form"));
+    let formEl = document.createElement("form");
+    let welcomeMessage = document.createElement("h2");
+    welcomeMessage.innerHTML = "Welcome " + user + ", add new item below!";
     let addShopItemForm = document.createElement("fieldset");
     let itemName = document.createElement("input");
     itemName.type = "text";
@@ -95,14 +67,30 @@ function loginSuccess(user, jsonId){
     itemButton.type = "submit";
     itemButton.id = "addShopItemBtn";
     itemButton.innerHTML = "Submit Item";
+    let logOutBtn = document.createElement("button");
+    logOutBtn.type = "button";
+    logOutBtn.innerHTML = "Log out";
+    logOutBtn.id = "logOutBtn";
+    logOutBtn.addEventListener("click", () => {location.reload();})
 
     addShopItemForm.appendChild(nameLabel);
     addShopItemForm.appendChild(itemName);
     addShopItemForm.appendChild(priceLabel);
     addShopItemForm.appendChild(itemPrice);
     addShopItemForm.appendChild(itemButton);
-    formEl.id = "shopItemForm";
     formEl.appendChild(addShopItemForm);
+    bodyEl.appendChild(welcomeMessage);
+    bodyEl.appendChild(formEl);
+    bodyEl.appendChild(logOutBtn);
+    document.querySelector("form").addEventListener("submit", el => {
+        if(el.preventDefault) el.preventDefault();
+        if(document.getElementById("wrongInlog") == null){
+            let wrongEl = document.createElement("div");
+            wrongEl.innerHTML = "Function out of order";
+            wrongEl.id = "wrongInlog";
+            document.querySelector("fieldset").appendChild(wrongEl);
+        }
+    })
 
     //Koden nedan var tänkt att lägga till object i json listan men fungerade ej, även require.js fanns tidigare av den anledningen men raderades pga alldeles för mycket onödig kod
     // formEl.addEventListener("submit", el => {

@@ -2,15 +2,22 @@
     box-sizing: border-box;
     overflow: hidden;
 }
-
+body{
+    display: grid;
+    grid-template-rows: 20vh 60vh 20vh;
+    grid-template-columns: 100vw;
+    justify-items: center;
+    align-items: center;
+}
+form{
+    grid-row: 2/3;
+}
 fieldset{
     width: max-content;
     padding: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 50vh 50vw;
-    transform: translate(-50%, -50%);
 }
 label{
     font-size: 1.5em;
@@ -23,4 +30,8 @@ input{
 #wrongInlog{
     color: red;
     margin-top: 1vh;
+}
+h2{
+    font-size: 3vw;
+    text-align: center;
 }
