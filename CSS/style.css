@@ -461,3 +461,18 @@ article:before{
 .minusSign{
     transform: translateY(-0.6ch);
 }
+
+footer{
+    text-align: center;
+    background: var(--backgroundColor);
+    color: var(--foregroundColor);
+    padding: 2vh;
+    font-size: 1vw;
+    font-weight: 600;
+    border-top: 1px solid var(--foregroundColor);
+}
+footer a{
+    color: var(--foregroundColor);
+    font-size: 1vw;
+    font-weight: 400;
+}

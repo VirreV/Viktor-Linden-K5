@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+fieldset{
+    width: max-content;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50vh 50vw;
+    transform: translate(-50%, -50%);
+}
+label{
+    font-size: 1.5em;
+}
+input{
+    font-size: 1em;
+    margin-bottom: 1.3vh;
+}
+
+#wrongInlog{
+    color: red;
+    margin-top: 1vh;
+}
