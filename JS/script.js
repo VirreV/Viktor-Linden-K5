@@ -3,12 +3,20 @@ if(localStorage.getItem("myList")){
     allProducts = JSON.parse(localStorage.getItem("myList"));
 }
 else{
-    let requestProducts = new XMLHttpRequest();
-    requestProducts.open("GET", "../DATA/products.json", false);
-    requestProducts.send(null);
-    let allProducts = JSON.parse(requestProducts.responseText);
-    localStorage.setItem("myList", JSON.stringify(allProducts));
-    allProducts = JSON.parse(localStorage.getItem("myList"));
+    try {
+        let requestProducts = new XMLHttpRequest();
+        requestProducts.open("GET", "../DATA/products.json", false);
+        requestProducts.send(null);
+        allProducts = JSON.parse(requestProducts.responseText);
+        localStorage.setItem("myList", JSON.stringify(allProducts));
+        allProducts = JSON.parse(localStorage.getItem("myList"));
+    } catch (error){
+        console.log(error);
+        let requestProducts = new XMLHttpRequest();
+        requestProducts.open("GET", "../DATA/products.json", false);
+        requestProducts.send(null);
+        allProducts = JSON.parse(requestProducts.responseText);
+    }
 }
 addShopItems();
 

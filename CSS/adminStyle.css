@@ -27,7 +27,7 @@ input{
     margin-bottom: 1.3vh;
 }
 
-#wrongInlog{
+.wrongInlog{
     color: red;
     margin-top: 1vh;
 }

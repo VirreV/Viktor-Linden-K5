@@ -28,7 +28,7 @@ document.querySelector("#loginForm").addEventListener("submit", el => {
         if(document.getElementById("wrongInlog") == null){
             let wrongEl = document.createElement("div");
             wrongEl.innerHTML = "Fel användarnamn eller lösenord";
-            wrongEl.id = "wrongInlog";
+            wrongEl.className = "wrongInlog";
             document.querySelector("fieldset").appendChild(wrongEl);
         }
     } 
@@ -50,6 +50,7 @@ function loginSuccess(user, jsonId){
     let welcomeMessage = document.createElement("h2");
     welcomeMessage.innerHTML = "Welcome " + user + "!<br>Add new item or remove an old item below!";
     let addShopItemForm = document.createElement("fieldset");
+    addShopItemForm.id = "addShopItemForm";
     let itemName = document.createElement("input");
     itemName.type = "text";
     itemName.placeholder = "Enter Name";
@@ -85,6 +86,7 @@ function loginSuccess(user, jsonId){
     let legend2 = document.createElement("legend");
     legend2.innerHTML = "Remove item";
     let removeShopItemForm = document.createElement("fieldset");
+    removeShopItemForm.id = "removeShopItemForm";
     let removeList = document.createElement("ul");
     removeList.id = "removeList";
 
@@ -93,12 +95,19 @@ function loginSuccess(user, jsonId){
         list = JSON.parse(localStorage.getItem("myList"));
     }
     else{
-        let requestProducts = new XMLHttpRequest();
-        requestProducts.open("GET", "../DATA/products.json", false);
-        requestProducts.send(null);
-        let allProducts = JSON.parse(requestProducts.responseText);
-        localStorage.setItem("myList", JSON.stringify(allProducts));
-        list = JSON.parse(localStorage.getItem("myList"));
+        try {
+            let requestProducts = new XMLHttpRequest();
+            requestProducts.open("GET", "../DATA/products.json", false);
+            requestProducts.send(null);
+            let allProducts = JSON.parse(requestProducts.responseText);
+            localStorage.setItem("myList", JSON.stringify(allProducts));
+            list = JSON.parse(localStorage.getItem("myList"));
+        } catch (error) {
+            let requestProducts = new XMLHttpRequest();
+            requestProducts.open("GET", "../DATA/products.json", false);
+            requestProducts.send(null);
+            list = JSON.parse(requestProducts.responseText);
+        }
     }
 
     removeListFnc();
@@ -107,15 +116,23 @@ function loginSuccess(user, jsonId){
         for(let i = 0; i < list.length; i++){
             let removeListItem = document.createElement("li");
             removeListItem.innerHTML = list[i].name;
-            removeListItem.addEventListener("click", el => {
-                list.splice(i, 1);
-                let jsonList = JSON.stringify(list);
-                localStorage.setItem("myList", jsonList);
-                while (document.querySelector("ul").firstChild){
-                    document.querySelector("ul").removeChild(document.querySelector("ul").firstChild);
-                }
-                removeListFnc(list);
-            });
+            if(localStorage.getItem("myList")){
+                removeListItem.addEventListener("click", el => {
+                    list.splice(i, 1);
+                    let jsonList = JSON.stringify(list);
+                    localStorage.setItem("myList", jsonList);
+                    while (document.querySelector("ul").firstChild){
+                        document.querySelector("ul").removeChild(document.querySelector("ul").firstChild);
+                    }
+                    removeListFnc(list);
+                });
+            } 
+            else {
+                let wrongEl = document.createElement("div");
+                wrongEl.innerHTML = "Function out of order";
+                wrongEl.className = "wrongInlog";
+                document.querySelector("#removeShopItemForm").appendChild(wrongEl);
+            }
             removeList.appendChild(removeListItem);
         }
     }
@@ -134,36 +151,44 @@ function loginSuccess(user, jsonId){
     bodyEl.appendChild(formEl);
     bodyEl.appendChild(logOutBtn);
     bodyEl.appendChild(a);
-    document.querySelector("form").addEventListener("submit", el => {
-        if(el.preventDefault) el.preventDefault();
-        let itemName = el.target.querySelector("input[type=text]");
-        let itemPrice = el.target.querySelector("input[type=number]");
-    
-        let newItem = {
-            name : itemName.value,
-            price : itemPrice.value
-        };
-    
-        list.push(newItem);
-        let jsonList = JSON.stringify(list);
-        localStorage.setItem("myList", jsonList);
-
-        let successfullDiv = document.createElement("div");
-        successfullDiv.innerHTML = "Successfully added item";
-        successfullDiv.id = "itemAdded";
-        document.querySelector("fieldset").appendChild(successfullDiv);
-        setTimeout(() => {
-            successfullDiv.style.opacity = "0";
-            setTimeout(() => {
-                successfullDiv.parentNode.removeChild(successfullDiv);
-            }, 1000);
-        }, 2000);
+    if(localStorage.getItem("myList")){
+        document.querySelector("form").addEventListener("submit", el => {
+            if(el.preventDefault) el.preventDefault();
+            let itemName = el.target.querySelector("input[type=text]");
+            let itemPrice = el.target.querySelector("input[type=number]");
         
-        while (document.querySelector("ul").firstChild){
-            document.querySelector("ul").removeChild(document.querySelector("ul").firstChild);
-        }
+            let newItem = {
+                name : itemName.value,
+                price : itemPrice.value
+            };
+        
+            list.push(newItem);
+            let jsonList = JSON.stringify(list);
+            localStorage.setItem("myList", jsonList);
 
-        list = JSON.parse(localStorage.getItem("myList"));
-        removeListFnc();
-    });
+            let successfullDiv = document.createElement("div");
+            successfullDiv.innerHTML = "Successfully added item";
+            successfullDiv.id = "itemAdded";
+            document.querySelector("fieldset").appendChild(successfullDiv);
+            setTimeout(() => {
+                successfullDiv.style.opacity = "0";
+                setTimeout(() => {
+                    successfullDiv.parentNode.removeChild(successfullDiv);
+                }, 1000);
+            }, 2000);
+            
+            while (document.querySelector("ul").firstChild){
+                document.querySelector("ul").removeChild(document.querySelector("ul").firstChild);
+            }
+
+            list = JSON.parse(localStorage.getItem("myList"));
+            removeListFnc();
+        });
+    } 
+    else {
+        let wrongEl = document.createElement("div");
+        wrongEl.innerHTML = "Function out of order";
+        wrongEl.className = "wrongInlog";
+        document.querySelector("#addShopItemForm").appendChild(wrongEl);
+    }
 }
