@@ -90,6 +90,10 @@ function loginSuccess(user, jsonId){
 
     let list = JSON.parse(localStorage.getItem("myList"));
 
+    if(list == null){
+        localStorage.setItem("myList", "");
+    }
+
     removeListFnc();
 
     function removeListFnc(){
