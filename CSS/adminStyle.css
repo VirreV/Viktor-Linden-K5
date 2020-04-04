@@ -79,6 +79,7 @@ legend{
     padding: 0;
     margin: 0;
     width: 12vw;
+    list-style: none;
 }
 #removeList li{
     font-size: 1.3vw;
