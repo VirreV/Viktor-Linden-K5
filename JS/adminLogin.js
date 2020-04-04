@@ -89,7 +89,6 @@ function loginSuccess(user, jsonId){
     removeList.id = "removeList";
 
     let list = null;
-
     if(localStorage.getItem("myList")){
         list = JSON.parse(localStorage.getItem("myList"));
     }
