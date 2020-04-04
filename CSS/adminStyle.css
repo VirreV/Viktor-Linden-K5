@@ -69,6 +69,9 @@ legend{
     justify-content: center;
     align-items: center;
 }
+#fieldsetContainer legend{
+    font-size: 1.5vw;
+}
 
 #removeList{
     text-decoration: none;
@@ -77,9 +80,22 @@ legend{
     margin: 0;
     width: 12vw;
 }
+#removeList li{
+    font-size: 1.3vw;
+    margin: 0.5vw 0;
+}
 #removeList li:hover{
     text-decoration: line-through;
     color: red;
     font-weight: bold;
     cursor: pointer;
+}
+
+@media (max-width: 1000px){
+    #removeList li{
+        font-size: 14px;
+    }
+    #fieldsetContainer legend{
+        font-size: 16px;
+    }
 }

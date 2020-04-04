@@ -90,8 +90,14 @@ function loginSuccess(user, jsonId){
 
     let list = JSON.parse(localStorage.getItem("myList"));
     if(list == null){
-        localStorage.setItem("myList", JSON.stringify([]));
+        let requestProducts = new XMLHttpRequest();
+        requestProducts.open("GET", "../DATA/products.json", false);
+        requestProducts.send(null);
+        let allProducts = JSON.parse(requestProducts.responseText);
+        let jsonList = JSON.stringify(allProducts);
+        localStorage.setItem("myList", jsonList);
         list = JSON.parse(localStorage.getItem("myList"));
+        console.log(list);
     }
 
     removeListFnc();
