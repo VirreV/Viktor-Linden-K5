@@ -1,5 +1,5 @@
 let requestProducts = new XMLHttpRequest();
-requestProducts.open("GET", "../DATA/login.json", false);
+requestProducts.open("GET", "../DATA/products.json", false);
 requestProducts.send(null);
 let allProducts = JSON.parse(requestProducts.responseText);
 addShopItems();
