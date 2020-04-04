@@ -29,6 +29,10 @@ body.darkMode{
     background: var(--backgroundColor);
 }
 
+body.darkMode img{
+    filter: invert();
+}
+
 header{
    
     height: calc(4vw + 51px);
@@ -182,6 +186,16 @@ body.menuOpen::-webkit-scrollbar {
     visibility: hidden;
 }
 
+h1{
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2em;
+    font-weight: 400;
+    color: var(--navColor);
+    text-shadow: 3px 3px 3px var(--dimColor);
+    margin: 5vh 0 7vh 0;
+}
+
 article{
     width: 80vw;
     border: 1px solid var(--foregroundColor);
@@ -195,7 +209,7 @@ article:after{
     content: '';
     display: block;
     position: absolute;
-    width: 70vw;
+    width: calc(100% - 10vw);
     height: calc(100% - 10vw);
     bottom: -2px;
     left: -2px;
@@ -207,7 +221,7 @@ article:before{
     content: '';
     display: block;
     position: absolute;
-    width: 70vw;
+    width: calc(100% - 10vw);
     height: calc(100% - 10vw);
     top: -2px;
     right: -2px;
@@ -314,7 +328,17 @@ article:before{
     font-weight: 600;
     cursor: pointer;
     z-index: 8;
+    padding: 0.4vh 1vw;
+    background: rgba(255, 255, 255, 0.5);
+    transition: background 350ms ease-in-out;
 }
+body.darkMode div:not(.cartOpen) .cart{
+    background: rgba(0, 0, 0, 0.5);
+}
+.cartOpen .cart{
+    background: none;
+}
+
 .cart img{
     width: 3vw;
     margin-right: 0.6vw;
@@ -351,9 +375,6 @@ article:before{
     display: flex;
     flex-direction: row;
     position: relative;
-    /*
-    flex-wrap: nowrap;
-    justify-content: space-between; */
     width: 70vw;
 }
 #cartDropDown li{
@@ -467,12 +488,34 @@ footer{
     background: var(--backgroundColor);
     color: var(--foregroundColor);
     padding: 2vh;
-    font-size: 1vw;
+    font-size: 1.5vw;
     font-weight: 600;
     border-top: 1px solid var(--foregroundColor);
 }
 footer a{
     color: var(--foregroundColor);
-    font-size: 1vw;
+    font-size: 1.4vw;
     font-weight: 400;
+}
+
+.imgText{
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3vh 10vw 0;
+}
+.imgText article{
+    width: 40vw;
+    font-size: 0.7em;
+    padding: 1vw;
+    margin: 0;
+}
+.imgText img{
+    width: 32vw;
+}
+.imgText article::before, .imgText article::after{
+    width: calc(100% - 6vw);
+    height: calc(100% - 6vw);
 }

@@ -35,3 +35,51 @@ h2{
     font-size: 3vw;
     text-align: center;
 }
+#itemAdded{
+    opacity: 1;
+    color: darkgreen;
+    margin-top: 1vh;
+    transition: opacity 1000ms linear;
+}
+
+#backToHomeBtn{
+    position: fixed;
+    top: 2vh;
+    left: 1.5vw;
+    font-size: 1vw;
+    background: lightgray;
+    color: black;
+    text-decoration: none;
+    transition: 200ms ease-in-out;
+    padding: 0.5vw;
+    border: 1px solid transparent;
+}
+#backToHomeBtn:hover{
+    border: 1px solid black;
+}
+
+legend{
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+
+#fieldsetContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#removeList{
+    text-decoration: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    width: 12vw;
+}
+#removeList li:hover{
+    text-decoration: line-through;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+}

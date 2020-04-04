@@ -1,7 +1,4 @@
-let request = new XMLHttpRequest();
-request.open("GET", "../DATA/products.json", false);
-request.send(null);
-let allProducts = JSON.parse(request.responseText);
+let allProducts = JSON.parse(localStorage.getItem("myList"));
 addShopItems();
 
 function addShopItems(){
